@@ -1,0 +1,43 @@
+## Deployment Issue Template
+
+### Deployment ID:
+<!-- Provide a unique identifier for this deployment, if applicable. -->
+
+### Deployment Environment:
+- [ ] Development
+- [ ] Staging
+- [ ] Production
+
+### Version:
+<!-- Specify the version being deployed. -->
+
+### Deployment Status:
+- [ ] Pending
+- [ ] In Progress
+- [ ] Completed
+- [ ] Failed
+
+### Issue Summary:
+<!-- Provide a brief summary of the issue or deployment concern. -->
+
+### Steps Taken:
+<!-- List any steps already taken in the deployment process, if applicable. -->
+
+### Error Messages:
+<!-- Include any error messages you encountered during the deployment process. -->
+
+### Affected Services:
+- [ ] Database
+- [ ] API
+- [ ] Frontend
+- [ ] Backend
+- [ ] Other (Specify)
+
+### Expected Outcome:
+<!-- What should have happened after the deployment? -->
+
+### Additional Information:
+<!-- Include any other details that may be useful for understanding the issue. -->
+
+### Deployment Logs:
+<!-- If available, attach or reference the deployment logs here. -->
