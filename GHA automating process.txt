@@ -1,0 +1,87 @@
+GHA automating process 
+code For Deployments :>>>>>
+
+name: Deploy to AWS
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+
+      - name: Deploy to AWS
+        run: |
+          aws s3 cp ./build/ s3://your-bucket-name/ --recursive
+
+Code for validation:>>>>>
+
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+  deploy:
+    needs: build_and_test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to production
+        run: |
+          # Deployment commands here, e.g., AWS CLI or SSH commands
+
+Common Validation Tasks:
+Unit tests (e.g., using frameworks like Jest, Mocha, etc.)
+Linting (e.g., using ESLint, Prettier)
+Security scans (e.g., Snyk, Trivy)
+Integration tests (e.g., end-to-end tests with Cypress)
+Health checks (e.g., ensure the deployment works by making an API call)
+
+git add .github/ISSUE_TEMPLATE/deploy-salesforce-standalone.yml
+
+git config user.name "Spoorthy pavan"; git config user.email "spoorthydutt33@gmail.com"
+
+git config --list
+
+git commit -m "Add deployment issue template"
+
+
+
+
