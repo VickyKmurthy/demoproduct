@@ -1,0 +1,17 @@
+# .github/workflows/test-validation.yml
+name: Test Validation Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  use-validation-template:
+    uses: ./.github/workflows/validation-template.yml
+    with:
+      ref: ${{ github.ref }}  # You can use the git reference (branch/tag) dynamically
+      job_name: "Dummy Validation Job"
