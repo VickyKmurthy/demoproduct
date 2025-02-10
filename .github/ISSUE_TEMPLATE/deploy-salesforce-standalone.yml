@@ -1,43 +1,30 @@
-## Deployment Issue Template
+# .github/workflows/validation-template.yml
+name: Validation Template
 
-### Deployment ID:
-<!-- Provide a unique identifier for this deployment, if applicable. -->
+on:
+  workflow_call:
+    inputs:
+      ref:
+        description: 'Git reference (branch, tag, etc.)'
+        required: true
+      job_name:
+        description: 'Job name to identify the specific validation task'
+        required: true
 
-### Deployment Environment:
-- [ ] Development
-- [ ] Staging
-- [ ] Production
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-### Version:
-<!-- Specify the version being deployed. -->
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
-### Deployment Status:
-- [ ] Pending
-- [ ] In Progress
-- [ ] Completed
-- [ ] Failed
+      - name: Install dependencies
+        run: npm install
 
-### Issue Summary:
-<!-- Provide a brief summary of the issue or deployment concern. -->
-
-### Steps Taken:
-<!-- List any steps already taken in the deployment process, if applicable. -->
-
-### Error Messages:
-<!-- Include any error messages you encountered during the deployment process. -->
-
-### Affected Services:
-- [ ] Database
-- [ ] API
-- [ ] Frontend
-- [ ] Backend
-- [ ] Other (Specify)
-
-### Expected Outcome:
-<!-- What should have happened after the deployment? -->
-
-### Additional Information:
-<!-- Include any other details that may be useful for understanding the issue. -->
-
-### Deployment Logs:
-<!-- If available, attach or reference the deployment logs here. -->
+      - name: Run tests (example validation task)
+        run: npm test
